@@ -2,13 +2,13 @@ package Day3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
 
-public class Day3Part1 {
+public class Day3Part2 {
     public static void main(String[] args) throws FileNotFoundException {
         File file = new File("adventofcode2024/src/Day3/input.txt");
         Scanner scanner = new Scanner(file);
