@@ -42,15 +42,15 @@ public class Day2Part2 {
     }
 
     static boolean isSafeWithLevelDampener(ArrayList<Integer> list) {
-        boolean safe = false;
+        boolean safe;
         ArrayList<Integer> removeList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             removeList.addAll(list);
             removeList.remove(i);
             safe = isSafe(removeList);
-            if (safe) break;
+            if (safe) return true;
             removeList.clear();
         }
-        return safe;
+        return false;
     }
 }
