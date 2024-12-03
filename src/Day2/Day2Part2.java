@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static Day2.Day2Part1.isSafe;
+
 public class Day2Part2 {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("/Users/moritzahlrichs/Documents/AdventOfCode2024/src/Day2/inputExample.txt");
+        File file = new File("/Users/moritzahlrichs/Documents/AdventOfCode2024/src/Day2/input.txt");
 
         Scanner sc = new Scanner(file);
 
@@ -24,7 +26,10 @@ public class Day2Part2 {
             if (list.size() == 1) {
                 safeCounter++;
             } else {
-                boolean safe = isSafeWithLevelDampener(list);
+                boolean safe = isSafe(list);
+                if (!safe) {
+                    safe = isSafeWithLevelDampener(list);
+                }
                 if (safe) {
                     safeCounter++;
                 }
@@ -37,15 +42,14 @@ public class Day2Part2 {
     }
 
     static boolean isSafeWithLevelDampener(ArrayList<Integer> list) {
-        boolean increasing;
-        increasing = list.get(1) > list.get(0);
-        boolean safe = true;
-        for (int i = 0; i < list.size()-1; i++) {
-            if (increasing && ((list.get(i+1) <= list.get(i)) || ((list.get(i+1) - list.get(i)) > 3))) {
-                safe = false;
-            } else if (!increasing && ((list.get(i + 1) >= list.get(i)) || ((list.get(i) - list.get(i + 1)) > 3))) {
-                safe = false;
-            }
+        boolean safe = false;
+        ArrayList<Integer> removeList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            removeList.addAll(list);
+            removeList.remove(i);
+            safe = isSafe(removeList);
+            if (safe) break;
+            removeList.clear();
         }
         return safe;
     }
