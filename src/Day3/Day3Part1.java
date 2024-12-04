@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Day3Part1 {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("adventofcode2024/src/Day3/input.txt");
+        File file = new File("src/Day3/input.txt");
         Scanner scanner = new Scanner(file);
         StringJoiner joiner = new StringJoiner("");
 
