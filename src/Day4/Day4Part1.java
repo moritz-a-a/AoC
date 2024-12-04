@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Day4Part1 {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("src/Day4/input.txt");
+        File file = new File("src/Day4/inputExample.txt");
         Scanner scanner = new Scanner(file);
         String input = "";
 
