@@ -10,18 +10,8 @@ import java.util.Scanner;
 
 public class Day4Part1 {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("src/Day4/input.txt");
-        Scanner scanner = new Scanner(file);
-        ArrayList<String[]> rows = new ArrayList<>();
-        String[] row;
 
-
-        while (scanner.hasNextLine()) {
-            row = scanner.nextLine().split("");
-            rows.add(row);
-        }
-
-        scanner.close();
+        ArrayList<String[]> rows = importFile("src/Day4/input.txt");
         int xmasCount = 0;
 
         for (int i = 0; i < rows.size(); i++) {
@@ -45,5 +35,21 @@ public class Day4Part1 {
             }
         }
         System.out.println(xmasCount);
+    }
+
+    static ArrayList<String[]> importFile(String path) throws FileNotFoundException {
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
+        ArrayList<String[]> rows = new ArrayList<>();
+        String[] row;
+
+
+        while (scanner.hasNextLine()) {
+            row = scanner.nextLine().split("");
+            rows.add(row);
+        }
+
+        scanner.close();
+        return rows;
     }
 }
