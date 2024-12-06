@@ -1,12 +1,7 @@
 package Day4;
 
-//import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-//import java.util.Scanner;
-//import java.util.StringJoiner;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
 
 import static Day4.Day4Part1.importFile;
 
