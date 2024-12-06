@@ -58,7 +58,40 @@ public class Day5Part1And2 {
                 sum += Integer.parseInt(updates.get(i)[updates.get(i).length/2]);
             }
         }
+
         System.out.println();
-        System.out.println(sum);
+
+        String pageCache;
+        String[] updateCache;
+
+        for (int i = 0; i < correctlyOrdered.length; i++) {
+            if (!correctlyOrdered[i]) {
+                for (int j = 0; j < updates.get(i).length-1; j++) {
+                    for (int k = j+1; k < updates.get(i).length; k++) {
+                       for (String rule : rules) {
+                           if (rule.equals(updates.get(i)[k] + "|" + updates.get(i)[j])) {
+                               pageCache = updates.get(i)[j];
+                               updateCache = updates.get(i);
+                               updateCache[j] = updateCache[k];
+                               updateCache[k] = pageCache;
+                               updates.set(i, updateCache);
+                               System.out.println(Arrays.toString(updateCache));
+                           }
+                       }
+                    }
+                }
+            }
+        }
+
+        System.out.println("\nPart 1: " + sum + "\n");
+        sum = 0;
+        for (int i = 0; i < correctlyOrdered.length; i++) {
+            if (!correctlyOrdered[i]) {
+                sum += Integer.parseInt(updates.get(i)[updates.get(i).length/2]);
+            }
+        }
+
+        System.out.println("Part 2: " + sum);
+
     }
 }
